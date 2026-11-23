@@ -1,0 +1,81 @@
+﻿lead_id,company_name,contact_name,sales_rep,stage,lead_source,deal_value,expected_value,lead_score,priority,followup_status,next_followup_date,recommended_action
+LD-10458,Orbit Systems,Arjun Gupta,Aarav Mehta,Negotiation,Referral,910428.92,719238.85,100,High,Overdue,2026-05-04,Follow up today
+LD-10331,Sapphire Consulting,Pooja Nair,Simran Kaur,Negotiation,Website,803425.57,626671.94,100,High,Overdue,2026-03-27,Follow up today
+LD-10602,Nexora Solutions,Pooja Singh,Vikram Malhotra,Negotiation,LinkedIn,468145.37,383879.2,100,High,Overdue,2026-03-29,Follow up today
+LD-10613,Trident Labs,Meera Verma,Aarav Mehta,Proposal,Webinar,522261.27,334247.21,100,High,Overdue,2026-02-07,Follow up today
+LD-10367,Orbit Services,Neha Nair,Simran Kaur,Demo Scheduled,Webinar,676497.02,331483.54,87,High,Overdue,2026-04-21,Follow up today
+LD-10364,Nexora Enterprises,Pooja Singh,Aarav Mehta,Negotiation,Referral,419066.99,314300.24,100,High,Overdue,2026-03-08,Follow up today
+LD-10310,Orbit Solutions,Ishita Reddy,Vikram Malhotra,Demo Scheduled,Cold Email,574012.84,298486.68,78,High,Overdue,2026-02-01,Follow up today
+LD-10231,Orbit Industries,Pooja Chopra,Vikram Malhotra,Demo Scheduled,Webinar,595981.07,292030.72,81,High,Overdue,2026-03-08,Follow up today
+LD-10170,Sapphire Services,Neha Nair,Vikram Malhotra,Proposal,Referral,459439.84,284852.7,100,High,Overdue,2026-05-08,Follow up today
+LD-10252,Kestrel Systems,Amit Joshi,Simran Kaur,Negotiation,Partner,342599.47,280931.57,100,High,Overdue,2026-04-22,Follow up today
+LD-10693,Orbit Enterprises,Karan Gupta,Aarav Mehta,Negotiation,LinkedIn,348958.4,279166.72,100,High,Overdue,2026-01-30,Follow up today
+LD-10527,Nexora Industries,Rahul Nair,Vikram Malhotra,Demo Scheduled,LinkedIn,556915.78,278457.89,98,High,Overdue,2026-05-02,Follow up today
+LD-10077,Trident Enterprises,Rahul Bansal,Aarav Mehta,Negotiation,Event,340673.15,272538.52,100,High,Overdue,2026-01-24,Follow up today
+LD-10403,Nexora Solutions,Meera Bhatia,Ananya Iyer,Demo Scheduled,Website,503069.77,256565.58,90,High,Overdue,2026-03-18,Follow up today
+LD-10338,Veda Technologies,Amit Bhatia,Ananya Iyer,Proposal,LinkedIn,383809.35,249476.08,100,High,Overdue,2026-02-12,Follow up today
+LD-10311,Himalaya Consulting,Amit Nair,Rohan Kapoor,Proposal,Webinar,375867.99,240555.51,97,High,Overdue,2026-04-10,Follow up today
+LD-10496,Apex Solutions,Ishita Bhatia,Vikram Malhotra,Negotiation,Website,302011.76,238589.29,100,High,Overdue,2026-03-15,Follow up today
+LD-10197,Veda Consulting,Pooja Nair,Simran Kaur,Demo Scheduled,LinkedIn,517663.52,238125.22,78,High,Overdue,2026-03-11,Follow up today
+LD-10539,Himalaya Technologies,Amit Verma,Aarav Mehta,Negotiation,Event,298755.74,236017.03,91,High,Overdue,2026-01-30,Follow up today
+LD-10025,Himalaya Labs,Ishita Gupta,Rohan Kapoor,Demo Scheduled,Website,494887.09,227648.06,86,High,Overdue,2026-04-28,Follow up today
+LD-10440,Veda Services,Neha Chopra,Simran Kaur,Negotiation,Partner,280048.52,224038.82,100,High,Overdue,2026-03-21,Follow up today
+LD-10735,Sapphire Services,Amit Gupta,Ananya Iyer,Qualified,Referral,634395.62,215694.51,77,High,Overdue,2026-03-15,Follow up today
+LD-10116,Kestrel Services,Priya Khanna,Rohan Kapoor,Proposal,Event,316789.97,212249.28,90,High,Overdue,2026-02-28,Follow up today
+LD-10526,Nexora Consulting,Neha Verma,Vikram Malhotra,Negotiation,Event,283867.87,210062.22,99,High,Overdue,2026-03-23,Follow up today
+LD-10098,Himalaya Industries,Arjun Bansal,Aarav Mehta,Proposal,Partner,328187.31,210039.88,94,High,Overdue,2026-03-24,Follow up today
+LD-10456,Himalaya Industries,Ishita Bansal,Ananya Iyer,Demo Scheduled,Referral,414925.8,207462.9,89,High,Overdue,2026-04-30,Follow up today
+LD-10441,Trident Services,Neha Joshi,Vikram Malhotra,Negotiation,Website,262005.55,201744.27,100,High,Overdue,2026-04-27,Follow up today
+LD-10580,Himalaya Services,Amit Reddy,Simran Kaur,Proposal,Website,310379.13,198642.64,94,High,Overdue,2026-02-26,Follow up today
+LD-10667,Trident Labs,Ishita Khanna,Rohan Kapoor,Demo Scheduled,Paid Search,375796.31,195414.08,82,High,Overdue,2026-02-19,Follow up today
+LD-10514,Veda Labs,Priya Khanna,Simran Kaur,Negotiation,Partner,260459.24,195344.43,100,High,Overdue,2026-04-28,Follow up today
+LD-10064,Kestrel Consulting,Meera Nair,Aarav Mehta,Proposal,Webinar,291269.26,189325.02,100,High,Overdue,2026-05-06,Follow up today
+LD-10494,Orbit Services,Amit Bhatia,Aarav Mehta,Demo Scheduled,Referral,382405.67,187378.78,89,High,Overdue,2026-05-03,Follow up today
+LD-10210,Sapphire Labs,Priya Nair,Ananya Iyer,Demo Scheduled,Website,373483.45,183006.89,100,High,Overdue,2026-04-28,Follow up today
+LD-10412,Orbit Services,Amit Khanna,Simran Kaur,Proposal,Paid Search,274987.61,181491.82,91,High,Overdue,2026-04-23,Follow up today
+LD-10573,Kestrel Consulting,Ishita Reddy,Ananya Iyer,Proposal,Referral,267798.9,176747.27,100,High,Overdue,2026-04-29,Follow up today
+LD-10675,Trident Industries,Sanjay Khanna,Aarav Mehta,Demo Scheduled,Paid Search,365927.97,171986.15,76,High,Overdue,2026-03-12,Follow up today
+LD-10577,Nexora Labs,Meera Bansal,Vikram Malhotra,Negotiation,Website,212209.95,167645.86,100,High,Overdue,2026-03-11,Follow up today
+LD-10665,Veda Solutions,Ishita Nair,Rohan Kapoor,Negotiation,Paid Search,219336.35,164502.26,100,High,Overdue,2026-04-28,Follow up today
+LD-10158,Sapphire Systems,Arjun Khanna,Simran Kaur,Negotiation,Webinar,206647.2,163251.29,100,High,Overdue,2026-03-08,Follow up today
+LD-10564,Orbit Enterprises,Ishita Reddy,Rohan Kapoor,Proposal,LinkedIn,260140.3,161286.99,100,High,Overdue,2026-04-29,Follow up today
+LD-10402,Sapphire Industries,Ishita Singh,Ananya Iyer,Demo Scheduled,Website,308061.47,160191.96,84,High,Overdue,2026-04-23,Follow up today
+LD-10108,Himalaya Solutions,Sanjay Nair,Vikram Malhotra,Proposal,Paid Search,248555.11,156589.72,94,High,Overdue,2026-02-19,Follow up today
+LD-10193,Nexora Consulting,Arjun Bhatia,Rohan Kapoor,Negotiation,LinkedIn,193091.22,152542.06,100,High,Overdue,2026-04-30,Follow up today
+LD-10008,Veda Solutions,Amit Bansal,Vikram Malhotra,Demo Scheduled,Event,317306.19,152306.97,76,High,Overdue,2026-04-28,Follow up today
+LD-10022,Veda Solutions,Karan Joshi,Simran Kaur,Demo Scheduled,LinkedIn,301752.49,150876.24,94,High,Overdue,2026-04-22,Follow up today
+LD-10635,Himalaya Systems,Ishita Gupta,Simran Kaur,Proposal,Partner,239043.21,143425.93,98,High,Overdue,2026-03-18,Follow up today
+LD-10329,Veda Systems,Rahul Khanna,Simran Kaur,Demo Scheduled,Unknown,316352.75,142358.74,86,High,Overdue,2026-04-22,Follow up today
+LD-10427,Himalaya Solutions,Karan Singh,Simran Kaur,Demo Scheduled,Webinar,295627.63,141901.26,83,High,Overdue,2026-05-01,Follow up today
+LD-10628,Nexora Industries,Neha Verma,Aarav Mehta,Proposal,LinkedIn,224744.62,134846.77,88,High,Overdue,2026-04-23,Follow up today
+LD-10500,Sapphire Solutions,Ishita Singh,Simran Kaur,Demo Scheduled,Paid Search,279512.01,134165.76,87,High,Overdue,2026-04-24,Follow up today
+LD-10167,Kestrel Enterprises,Rahul Khanna,Aarav Mehta,Negotiation,Referral,168492.7,128054.45,100,High,Overdue,2026-03-18,Follow up today
+LD-10716,Veda Consulting,Rahul Gupta,Ananya Iyer,Proposal,Webinar,188030.8,127860.94,89,High,Overdue,2026-04-16,Follow up today
+LD-10688,Orbit Technologies,Pooja Reddy,Vikram Malhotra,Negotiation,LinkedIn,153907.85,124665.36,100,High,Overdue,2026-05-07,Follow up today
+LD-10399,Sapphire Technologies,Amit Bhatia,Rohan Kapoor,Proposal,Partner,200412.67,124255.86,100,High,Overdue,2026-05-07,Follow up today
+LD-10356,Veda Services,Arjun Verma,Ananya Iyer,Negotiation,Website,153671.19,122936.95,95,High,Overdue,2026-03-06,Follow up today
+LD-10732,Sapphire Enterprises,Sanjay Singh,Aarav Mehta,Demo Scheduled,Event,254356.29,122091.02,90,High,Overdue,2026-05-02,Follow up today
+LD-10454,Orbit Labs,Rahul Khanna,Rohan Kapoor,Negotiation,Website,155056.03,117842.58,93,High,Overdue,2026-02-24,Follow up today
+LD-10720,Sapphire Technologies,Priya Gupta,Simran Kaur,Negotiation,Cold Email,154501.5,117421.14,100,High,Overdue,2026-03-04,Follow up today
+LD-10556,Sapphire Enterprises,Rahul Nair,Simran Kaur,Negotiation,LinkedIn,155300.08,116475.06,100,High,Overdue,2026-02-13,Follow up today
+LD-10155,Kestrel Labs,Pooja Singh,Ananya Iyer,Proposal,Referral,179717.09,115018.94,89,High,Overdue,2026-04-29,Follow up today
+LD-10477,Kestrel Systems,Ishita Bhatia,Ananya Iyer,Negotiation,Event,144632.26,114259.49,93,High,Overdue,2026-04-02,Follow up today
+LD-10326,Sapphire Services,Meera Khanna,Vikram Malhotra,Proposal,Referral,170350.86,114135.08,85,High,Overdue,2026-03-09,Follow up today
+LD-10395,Himalaya Enterprises,Pooja Chopra,Simran Kaur,Demo Scheduled,Cold Email,247437.91,113821.44,76,High,Overdue,2026-02-11,Follow up today
+LD-10076,Himalaya Systems,Pooja Reddy,Aarav Mehta,Demo Scheduled,Webinar,222804.9,113630.5,98,High,Overdue,2026-05-04,Follow up today
+LD-10073,Nexora Systems,Neha Verma,Aarav Mehta,Qualified,Unknown,305489.81,109976.33,79,High,Overdue,2026-05-07,Follow up today
+LD-10649,Nexora Labs,Sanjay Gupta,Rohan Kapoor,Demo Scheduled,Website,215735.76,107867.88,76,High,Overdue,2026-05-05,Follow up today
+LD-10188,Apex Technologies,Amit Joshi,Ananya Iyer,Proposal,Partner,173732.09,107713.9,80,High,Overdue,2026-02-13,Follow up today
+LD-10196,Trident Industries,Rahul Khanna,Vikram Malhotra,Demo Scheduled,Event,218153.01,106894.97,82,High,Overdue,2026-04-26,Follow up today
+LD-10579,Veda Labs,Sanjay Singh,Aarav Mehta,Proposal,Cold Email,158318.85,106073.63,90,High,Overdue,2026-03-30,Follow up today
+LD-10745,Nexora Systems,Sanjay Chopra,Ananya Iyer,Proposal,Website,175226.66,105136.0,90,High,Overdue,2026-04-04,Follow up today
+LD-10742,Orbit Labs,Pooja Khanna,Aarav Mehta,Demo Scheduled,Webinar,197022.14,102451.51,87,High,Overdue,2026-03-31,Follow up today
+LD-10588,Sapphire Labs,Rahul Bansal,Rohan Kapoor,Negotiation,Partner,128640.89,100339.89,100,High,Overdue,2026-04-25,Follow up today
+LD-10322,Kestrel Services,Karan Gupta,Aarav Mehta,Demo Scheduled,Event,207899.61,99791.81,82,High,Overdue,2026-02-18,Follow up today
+LD-10542,Himalaya Services,Karan Reddy,Vikram Malhotra,Proposal,Cold Email,157144.98,99001.34,100,High,Overdue,2026-05-01,Follow up today
+LD-10517,Orbit Labs,Arjun Chopra,Rohan Kapoor,Demo Scheduled,Referral,195818.23,93992.75,81,High,Overdue,2026-02-24,Follow up today
+LD-10039,Apex Services,Rahul Reddy,Simran Kaur,Demo Scheduled,Cold Email,208579.78,93860.9,86,High,Overdue,2026-05-03,Follow up today
+LD-10240,Himalaya Enterprises,Pooja Bansal,Vikram Malhotra,Proposal,Cold Email,144121.37,93678.89,86,High,Overdue,2026-05-08,Follow up today
+LD-10370,Sapphire Solutions,Ishita Chopra,Aarav Mehta,Negotiation,Cold Email,120043.72,93634.1,100,High,Overdue,2026-04-25,Follow up today
+LD-10703,Nexora Enterprises,Neha Joshi,Simran Kaur,Proposal,Referral,136018.21,91132.2,100,High,Overdue,2026-05-05,Follow up today
+LD-10616,Veda Consulting,Arjun Nair,Ananya Iyer,Negotiation,Cold Email,107301.52,86914.23,99,High,Overdue,2026-04-06,Follow up today

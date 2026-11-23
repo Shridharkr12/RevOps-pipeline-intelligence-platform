@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RevOps Pipeline Intelligence Platform | Sales Pipeline Dashboard</title>
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --navy-2: #14305a;
+      --ink: #101828;
+      --muted: #667085;
+      --line: #e4e7ec;
+      --bg: #f4f6fa;
+      --panel: #ffffff;
+      --blue: #1d4ed8;
+      --teal: #0e7490;
+      --green: #067647;
+      --amber: #b54708;
+      --red: #b42318;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Inter, -apple-system, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .topbar { background: linear-gradient(90deg, var(--navy), var(--navy-2)); color: #fff; position: sticky; top: 0; z-index: 10; }
+    .topbar-inner { max-width: 1280px; margin: 0 auto; padding: 12px 28px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo { width: 34px; height: 34px; border-radius: 8px; background: #2f6bff; display: grid; place-items: center; font-weight: 800; font-size: 13px; letter-spacing: .5px; }
+    .brand-name { font-size: 15px; font-weight: 700; }
+    .brand-sub { font-size: 12px; color: #a9b8d3; }
+    .meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.16); color: #dbe5f7; }
+    .hero, main { max-width: 1280px; margin: 0 auto; padding-left: 28px; padding-right: 28px; }
+    .hero { padding-top: 28px; }
+    .hero h1 { margin: 0; font-size: 26px; letter-spacing: -.01em; }
+    .hero p { margin: 6px 0 0; color: var(--muted); max-width: 820px; }
+    main { padding-top: 20px; padding-bottom: 40px; }
+    .kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+    .kpi { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--blue); border-radius: 10px; padding: 16px 18px; box-shadow: 0 1px 2px rgba(16,24,40,.05); }
+    .kpi.teal { border-top-color: var(--teal); }
+    .kpi.green { border-top-color: var(--green); }
+    .kpi.amber { border-top-color: var(--amber); }
+    .kpi.red { border-top-color: var(--red); }
+    .kpi-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+    .kpi-value { font-size: 26px; font-weight: 700; margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
+    .kpi-note { font-size: 12px; color: var(--muted); }
+    .row { display: grid; gap: 16px; margin-top: 16px; }
+    .row.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; min-width: 0; box-shadow: 0 1px 2px rgba(16,24,40,.05); }
+    .card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+    .card h2 { margin: 0; font-size: 15px; font-weight: 700; }
+    .card-sub { font-size: 12px; color: var(--muted); }
+    .search { border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font-size: 13px; min-width: 220px; font-family: inherit; }
+    .search:focus { outline: 2px solid #bfd1ff; border-color: #93b0ff; }
+    .bar-row { display: grid; grid-template-columns: 140px 1fr 120px; align-items: center; gap: 12px; padding: 6px 0; font-size: 13px; }
+    .bar-label { color: #344054; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .bar-track { height: 10px; background: #eef2f6; border-radius: 999px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #4f83ff, #1d4ed8); }
+    .bar-fill.won { background: linear-gradient(90deg, #34b27b, #067647); }
+    .bar-fill.lost { background: linear-gradient(90deg, #f08a82, #b42318); }
+    .bar-value { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .bar-value small { display: block; font-weight: 400; color: var(--muted); font-size: 11px; }
+    .table-wrap { overflow: auto; }
+    .table-wrap.tall { max-height: 470px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.wide { min-width: 960px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+    th { position: sticky; top: 0; background: #f9fafb; color: #475467; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+    td.num, th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    td.nowrap { white-space: nowrap; }
+    tbody tr:hover { background: #f9fafb; }
+    .badge { display: inline-block; border-radius: 999px; padding: 2px 9px; font-size: 12px; font-weight: 600; white-space: nowrap; background: #eef2f6; color: #344054; }
+    .badge-high, .badge-overdue { background: #fee4e2; color: var(--red); }
+    .badge-medium, .badge-due-today, .badge-missing-follow-up { background: #fef0c7; color: var(--amber); }
+    .badge-low, .badge-scheduled { background: #d1fadf; color: var(--green); }
+    .badge-due-this-week { background: #dbe7ff; color: var(--blue); }
+    .insights { margin: 0; padding-left: 18px; color: #344054; font-size: 14px; }
+    .insights li { margin-bottom: 8px; }
+    .note { border-left: 4px solid var(--blue); background: #eef4ff; padding: 12px 14px; margin-top: 14px; font-size: 14px; color: #344054; border-radius: 0 8px 8px 0; }
+    footer { max-width: 1280px; margin: 0 auto; padding: 0 28px 32px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 1100px) {
+      .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 900px) {
+      .row.two { grid-template-columns: 1fr; }
+      .hero, main, .topbar-inner, footer { padding-left: 16px; padding-right: 16px; }
+      .bar-row { grid-template-columns: 96px 1fr 96px; }
+      .search { min-width: 0; width: 100%; }
+    }
+    @media (max-width: 560px) {
+      .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo">RP</div>
+        <div>
+          <div class="brand-name">RevOps Pipeline Intelligence Platform</div>
+          <div class="brand-sub">Revenue Operations Analytics</div>
+        </div>
+      </div>
+      <div class="meta">
+        <span class="chip">Data as of 09 May 2026</span>
+        <span class="chip">Synthetic dataset</span>
+        <span class="chip">Prepared by Shridhar Sharma</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <h1>Sales Pipeline &amp; Follow-Up Overview</h1>
+    <p>Weekly sales operations view of pipeline value, lead quality, follow-up risk and rep workload across 760 cleaned and deduplicated CRM leads.</p>
+  </div>
+
+  <main>
+    <section class="kpis"><div class="kpi teal"><div class="kpi-label">Total Leads</div><div class="kpi-value">760</div><div class="kpi-note">Deduplicated CRM records</div></div><div class="kpi "><div class="kpi-label">Active Pipeline</div><div class="kpi-value">₹13.46 Cr</div><div class="kpi-note">626 open opportunities</div></div><div class="kpi "><div class="kpi-label">Expected Pipeline</div><div class="kpi-value">₹4.49 Cr</div><div class="kpi-note">Probability-weighted, 33% of active</div></div><div class="kpi green"><div class="kpi-label">Won Revenue</div><div class="kpi-value">₹1.76 Cr</div><div class="kpi-note">80 deals closed won</div></div><div class="kpi red"><div class="kpi-label">Overdue Follow-Ups</div><div class="kpi-value">442</div><div class="kpi-note">71% of open leads</div></div><div class="kpi amber"><div class="kpi-label">High-Priority Leads</div><div class="kpi-value">194</div><div class="kpi-note">Lead score of 75 or above</div></div></section>
+
+    <section class="row two">
+      <div class="card">
+        <div class="card-head"><h2>Deal Value by Stage</h2><span class="card-sub">Total deal value and lead count</span></div>
+        <div class="bar-row"><div class="bar-label" title="New">New</div><div class="bar-track"><div class="bar-fill " style="width:72.3%"></div></div><div class="bar-value">₹2.15 Cr<small>102 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Contacted">Contacted</div><div class="bar-track"><div class="bar-fill " style="width:100.0%"></div></div><div class="bar-value">₹2.97 Cr<small>129 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Nurture">Nurture</div><div class="bar-track"><div class="bar-fill " style="width:39.2%"></div></div><div class="bar-value">₹1.16 Cr<small>49 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Qualified">Qualified</div><div class="bar-track"><div class="bar-fill " style="width:94.8%"></div></div><div class="bar-value">₹2.82 Cr<small>130 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Demo Scheduled">Demo Scheduled</div><div class="bar-track"><div class="bar-fill " style="width:64.5%"></div></div><div class="bar-value">₹1.92 Cr<small>97 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Proposal">Proposal</div><div class="bar-track"><div class="bar-fill " style="width:45.2%"></div></div><div class="bar-value">₹1.34 Cr<small>69 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Negotiation">Negotiation</div><div class="bar-track"><div class="bar-fill " style="width:37.2%"></div></div><div class="bar-value">₹1.11 Cr<small>50 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Won">Won</div><div class="bar-track"><div class="bar-fill won" style="width:59.2%"></div></div><div class="bar-value">₹1.76 Cr<small>80 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Lost">Lost</div><div class="bar-track"><div class="bar-fill lost" style="width:41.9%"></div></div><div class="bar-value">₹1.24 Cr<small>54 leads</small></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>Expected Pipeline by Lead Source</h2><span class="card-sub">Probability-weighted, open leads</span></div>
+        <div class="bar-row"><div class="bar-label" title="Website">Website</div><div class="bar-track"><div class="bar-fill " style="width:100.0%"></div></div><div class="bar-value">₹1.03 Cr<small>167 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Referral">Referral</div><div class="bar-track"><div class="bar-fill " style="width:76.5%"></div></div><div class="bar-value">₹78.80 L<small>137 leads</small></div></div><div class="bar-row"><div class="bar-label" title="LinkedIn">LinkedIn</div><div class="bar-track"><div class="bar-fill " style="width:65.8%"></div></div><div class="bar-value">₹67.72 L<small>113 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Webinar">Webinar</div><div class="bar-track"><div class="bar-fill " style="width:49.5%"></div></div><div class="bar-value">₹50.93 L<small>84 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Cold Email">Cold Email</div><div class="bar-track"><div class="bar-fill " style="width:42.0%"></div></div><div class="bar-value">₹43.22 L<small>77 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Partner">Partner</div><div class="bar-track"><div class="bar-fill " style="width:37.6%"></div></div><div class="bar-value">₹38.69 L<small>57 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Event">Event</div><div class="bar-track"><div class="bar-fill " style="width:29.0%"></div></div><div class="bar-value">₹29.87 L<small>54 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Paid Search">Paid Search</div><div class="bar-track"><div class="bar-fill " style="width:27.5%"></div></div><div class="bar-value">₹28.27 L<small>55 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Unknown">Unknown</div><div class="bar-track"><div class="bar-fill " style="width:8.1%"></div></div><div class="bar-value">₹8.32 L<small>16 leads</small></div></div>
+      </div>
+    </section>
+
+    <section class="row">
+      <div class="card">
+        <div class="card-head">
+          <div><h2>Priority Follow-Up Queue</h2><span class="card-sub">Top 25 leads ranked by priority, follow-up status and expected value</span></div>
+          <input id="queue-filter" class="search" type="search" placeholder="Filter by company, rep, stage..." aria-label="Filter follow-up queue">
+        </div>
+        <div class="table-wrap tall"><table id="queue-table" class="wide"><thead><tr><th class="">Lead ID</th><th class="">Company</th><th class="">Sales Rep</th><th class="">Stage</th><th class="num">Expected Value</th><th class="num">Score</th><th class="">Priority</th><th class="">Follow-Up</th><th class="">Recommended Action</th></tr></thead><tbody><tr><td class="nowrap">LD-10458</td><td>Orbit Systems</td><td>Aarav Mehta</td><td>Negotiation</td><td class="num">₹7,19,239</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10331</td><td>Sapphire Consulting</td><td>Simran Kaur</td><td>Negotiation</td><td class="num">₹6,26,672</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10602</td><td>Nexora Solutions</td><td>Vikram Malhotra</td><td>Negotiation</td><td class="num">₹3,83,879</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10613</td><td>Trident Labs</td><td>Aarav Mehta</td><td>Proposal</td><td class="num">₹3,34,247</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10367</td><td>Orbit Services</td><td>Simran Kaur</td><td>Demo Scheduled</td><td class="num">₹3,31,484</td><td class="num">87</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10364</td><td>Nexora Enterprises</td><td>Aarav Mehta</td><td>Negotiation</td><td class="num">₹3,14,300</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10310</td><td>Orbit Solutions</td><td>Vikram Malhotra</td><td>Demo Scheduled</td><td class="num">₹2,98,487</td><td class="num">78</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10231</td><td>Orbit Industries</td><td>Vikram Malhotra</td><td>Demo Scheduled</td><td class="num">₹2,92,031</td><td class="num">81</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10170</td><td>Sapphire Services</td><td>Vikram Malhotra</td><td>Proposal</td><td class="num">₹2,84,853</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10252</td><td>Kestrel Systems</td><td>Simran Kaur</td><td>Negotiation</td><td class="num">₹2,80,932</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10693</td><td>Orbit Enterprises</td><td>Aarav Mehta</td><td>Negotiation</td><td class="num">₹2,79,167</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10527</td><td>Nexora Industries</td><td>Vikram Malhotra</td><td>Demo Scheduled</td><td class="num">₹2,78,458</td><td class="num">98</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10077</td><td>Trident Enterprises</td><td>Aarav Mehta</td><td>Negotiation</td><td class="num">₹2,72,539</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10403</td><td>Nexora Solutions</td><td>Ananya Iyer</td><td>Demo Scheduled</td><td class="num">₹2,56,566</td><td class="num">90</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10338</td><td>Veda Technologies</td><td>Ananya Iyer</td><td>Proposal</td><td class="num">₹2,49,476</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10311</td><td>Himalaya Consulting</td><td>Rohan Kapoor</td><td>Proposal</td><td class="num">₹2,40,556</td><td class="num">97</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10496</td><td>Apex Solutions</td><td>Vikram Malhotra</td><td>Negotiation</td><td class="num">₹2,38,589</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10197</td><td>Veda Consulting</td><td>Simran Kaur</td><td>Demo Scheduled</td><td class="num">₹2,38,125</td><td class="num">78</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10539</td><td>Himalaya Technologies</td><td>Aarav Mehta</td><td>Negotiation</td><td class="num">₹2,36,017</td><td class="num">91</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10025</td><td>Himalaya Labs</td><td>Rohan Kapoor</td><td>Demo Scheduled</td><td class="num">₹2,27,648</td><td class="num">86</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10440</td><td>Veda Services</td><td>Simran Kaur</td><td>Negotiation</td><td class="num">₹2,24,039</td><td class="num">100</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10735</td><td>Sapphire Services</td><td>Ananya Iyer</td><td>Qualified</td><td class="num">₹2,15,695</td><td class="num">77</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10116</td><td>Kestrel Services</td><td>Rohan Kapoor</td><td>Proposal</td><td class="num">₹2,12,249</td><td class="num">90</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10526</td><td>Nexora Consulting</td><td>Vikram Malhotra</td><td>Negotiation</td><td class="num">₹2,10,062</td><td class="num">99</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr><tr><td class="nowrap">LD-10098</td><td>Himalaya Industries</td><td>Aarav Mehta</td><td>Proposal</td><td class="num">₹2,10,040</td><td class="num">94</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-overdue">Overdue</span></td><td>Follow up today</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="row">
+      <div class="card">
+        <div class="card-head"><h2>Sales Rep Performance</h2><span class="card-sub">Ranked by expected pipeline</span></div>
+        <div class="table-wrap"><table><thead><tr><th class="">Sales Rep</th><th class="num">Leads</th><th class="num">Expected Pipeline</th><th class="num">Won Revenue</th><th class="num">Overdue</th><th class="num">High Priority</th><th class="num">Avg Score</th></tr></thead><tbody><tr><td>Simran Kaur</td><td class="num">160</td><td class="num">₹1,08,14,596</td><td class="num">₹54,87,335</td><td class="num">100</td><td class="num">41</td><td class="num">61.5</td></tr><tr><td>Vikram Malhotra</td><td class="num">154</td><td class="num">₹96,82,500</td><td class="num">₹40,82,165</td><td class="num">92</td><td class="num">43</td><td class="num">60.5</td></tr><tr><td>Aarav Mehta</td><td class="num">155</td><td class="num">₹95,77,533</td><td class="num">₹19,36,308</td><td class="num">95</td><td class="num">38</td><td class="num">57</td></tr><tr><td>Ananya Iyer</td><td class="num">131</td><td class="num">₹68,40,675</td><td class="num">₹18,83,706</td><td class="num">68</td><td class="num">33</td><td class="num">57</td></tr><tr><td>Rohan Kapoor</td><td class="num">135</td><td class="num">₹68,33,205</td><td class="num">₹39,45,296</td><td class="num">74</td><td class="num">35</td><td class="num">58.7</td></tr><tr><td>Unassigned</td><td class="num">25</td><td class="num">₹11,32,518</td><td class="num">₹2,44,297</td><td class="num">13</td><td class="num">4</td><td class="num">51.9</td></tr></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="row two">
+      <div class="card">
+        <div class="card-head"><h2>Expected Pipeline by Industry</h2><span class="card-sub">Probability-weighted, open leads</span></div>
+        <div class="bar-row"><div class="bar-label" title="SaaS">SaaS</div><div class="bar-track"><div class="bar-fill " style="width:100.0%"></div></div><div class="bar-value">₹1.21 Cr<small>131 leads</small></div></div><div class="bar-row"><div class="bar-label" title="IT Services">IT Services</div><div class="bar-track"><div class="bar-fill " style="width:63.9%"></div></div><div class="bar-value">₹77.25 L<small>142 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Healthcare">Healthcare</div><div class="bar-track"><div class="bar-fill " style="width:51.8%"></div></div><div class="bar-value">₹62.59 L<small>105 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Real Estate">Real Estate</div><div class="bar-track"><div class="bar-fill " style="width:42.2%"></div></div><div class="bar-value">₹51.00 L<small>102 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Manufacturing">Manufacturing</div><div class="bar-track"><div class="bar-fill " style="width:39.2%"></div></div><div class="bar-value">₹47.44 L<small>62 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Financial Services">Financial Services</div><div class="bar-track"><div class="bar-fill " style="width:24.1%"></div></div><div class="bar-value">₹29.17 L<small>53 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Retail">Retail</div><div class="bar-track"><div class="bar-fill " style="width:23.9%"></div></div><div class="bar-value">₹28.88 L<small>78 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Education">Education</div><div class="bar-track"><div class="bar-fill " style="width:16.7%"></div></div><div class="bar-value">₹20.24 L<small>72 leads</small></div></div><div class="bar-row"><div class="bar-label" title="Unknown">Unknown</div><div class="bar-track"><div class="bar-fill " style="width:9.4%"></div></div><div class="bar-value">₹11.32 L<small>15 leads</small></div></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><h2>Key Insights</h2></div>
+        <ul class="insights"><li>Website is the strongest lead source with ₹1.03 Cr in expected pipeline.</li><li>Simran Kaur owns the largest expected pipeline at ₹1.08 Cr.</li><li>SaaS is the highest-value industry segment at ₹1.21 Cr.</li><li>442 open leads (71%) have an overdue follow-up and need immediate attention.</li></ul>
+        <div class="note"><strong>Recommendation:</strong> Work overdue high-score leads first, fill missing follow-up dates, and rank lead sources by expected pipeline rather than raw lead volume.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Prepared by Shridhar Sharma. All records are synthetic and generated for demonstration. Amounts in INR.</footer>
+  <script>
+    document.getElementById('queue-filter').addEventListener('input', function (event) {
+      var query = event.target.value.toLowerCase();
+      document.querySelectorAll('#queue-table tbody tr').forEach(function (row) {
+        row.style.display = row.textContent.toLowerCase().indexOf(query) > -1 ? '' : 'none';
+      });
+    });
+</script>
+</body>
+</html>
